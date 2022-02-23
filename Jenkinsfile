@@ -21,7 +21,11 @@ def workspace = "${env.WORKSPACE}"
   
     releases = []
 
-  
+    def get_authority_name(staging_name){
+      read_yaml= readYaml(file: "values/"+staging_name)
+      return read_yaml['migration-helper-ui']['authorityName']
+      }
+ 
     new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
       if (!exclude_list.contains(staging_name.name)){
@@ -41,8 +45,5 @@ def workspace = "${env.WORKSPACE}"
         println "${item}"
     }
   }
-  @NonCPS
-  def get_authority_name(staging_name){
-      read_yaml= readYaml(file: "values/"+staging_name)
-      return read_yaml['migration-helper-ui']['authorityName']
-      }
+
+
