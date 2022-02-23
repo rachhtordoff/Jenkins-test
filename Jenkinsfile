@@ -11,7 +11,7 @@ def exclude_list = [
 println "hi"
 
 node {
-env.WORKSPACE = sh(returnStdout: true, script: 'pwd').trim()
+env.WORKSPACE = pwd()
 def workspace = "${env.WORKSPACE}"
 println "${env.WORKSPACE}"
 
