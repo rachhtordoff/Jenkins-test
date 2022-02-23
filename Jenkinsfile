@@ -20,8 +20,10 @@ env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
   
     releases = []
-
-    new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
+  
+    
+    def dir = new File(workspace+"/values/")  
+    dir.eachDir { staging_name ->
 
       name = staging_name.name
       if (name.contains("staging-"){
