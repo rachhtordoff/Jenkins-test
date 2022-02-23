@@ -1,6 +1,10 @@
 #!/usr/bin/env groovy
 import static groovy.io.FileType.*
 
+  def get_authority_name(staging_name){
+  read_yaml= readYaml(file: "values/"+staging_name)
+  return read_yaml['migration-helper-ui']['authorityName']
+}
 
 // def releases = ['staging-shared', 'staging-800', 'staging-801', 'staging-802']
 node {
@@ -44,9 +48,5 @@ def workspace = "${env.WORKSPACE}"
   }
 
 
-  def get_authority_name(staging_name){
-  read_yaml= readYaml(file: "values/"+staging_name)
-  return read_yaml['migration-helper-ui']['authorityName']
-}
 
 
