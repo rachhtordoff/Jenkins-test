@@ -19,7 +19,6 @@ sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
   
-  def getTags (workspace, exclude_list) {
     releases = []
 
     new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
@@ -42,11 +41,8 @@ def workspace = "${env.WORKSPACE}"
       }
       
 }
-    return releases
-  }
-  
-      releases= getTags(workspace, exclude_list)
-  
+
+    
       releases.each { item ->
         println "Hello ${item}"
     }
