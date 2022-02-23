@@ -31,8 +31,9 @@ def workspace = "${env.WORKSPACE}"
 
           if (get_name.isInteger()) {
             read_yaml = readYaml(file: "values/"+staging_name.name)
-              println read_yaml['migration-helper-ui']['authorityName']
-              if (!read_yaml['migration-helper-ui']['authorityName'] == 'Staging Maintain') {
+              auth_name= read_yaml['migration-helper-ui']['authorityName']
+            println auth_name
+              if (!auth_name == 'Staging Maintain') {
                   println "ELLOW"
                 println staging_name.substring(0, staging_name.name.lastIndexOf('.'))
                   releases << staging_name.substring(0, staging_name.name.lastIndexOf('.'))
