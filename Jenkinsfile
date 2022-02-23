@@ -10,6 +10,8 @@ def exclude_list = [
 ]
 println "hi"
 
+println ${WORKSPACE}
+
   new File("./values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       if (!exclude_list.contains(staging_name)){
           remove_yaml= staging_name.replace(".yaml", "")
