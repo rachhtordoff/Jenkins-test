@@ -35,7 +35,8 @@ def workspace = "${env.WORKSPACE}"
             println auth_name
               if (auth_name != 'Staging Maintain') {
                   println "ELLOW"
-                println staging_name.substring(0, staging_name.name.lastIndexOf('.'))
+                println staging_name.name.lastIndexOf('.')
+                println staging_name.name
                   releases << staging_name.substring(0, staging_name.name.lastIndexOf('.'))
               }
           }
