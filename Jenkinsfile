@@ -1,5 +1,7 @@
 #!/usr/bin/env groovy
 import static groovy.io.FileType.*
+import groovy.yaml.YamlSlurper
+
 
 // def releases = ['staging-shared', 'staging-800', 'staging-801', 'staging-802']
 node {
@@ -34,7 +36,7 @@ println "BLERRR"
           println get_name
           println get_name.isInteger()
           if (get_name.isInteger()) {
-              def read_yaml = readYaml file: workspace+"/values/"+ staging_name
+              def read_yaml = new YamlSlurper().parseText(orkspace+"/values/"+ staging_name)
               if (config.migration-helper-ui && !config.migration-helper-ui.authorityName == 'Staging Maintain') {
                   releases << staging_name.substring(0, staging_name.name.lastIndexOf('.'))
               }
