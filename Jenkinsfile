@@ -26,9 +26,9 @@ println "BLERRR"
   
   new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
       println "hi"
-      println staging_name.name
-      if (!exclude_list.contains(staging_name)){
-          remove_yaml= staging_name.replace(".yaml", "")
+      def name = staging_name.name
+      if (!exclude_list.contains(name)){
+          remove_yaml= name.replace(".yaml", "")
           println remove_yaml
           get_name= remove_yaml.replace("staging-", "")
           println get_name
