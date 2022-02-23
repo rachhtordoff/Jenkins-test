@@ -24,7 +24,7 @@ def workspace = "${env.WORKSPACE}"
 println "${env.WORKSPACE}"
 println "BLERRR"
   
-  new File(workspace+"values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
+  new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
       println "hi"
       println staging_name.name
       if (!exclude_list.contains(staging_name)){
@@ -32,7 +32,7 @@ println "BLERRR"
           println remove_yaml
           get_name= remove_yaml.replace("staging-", "")
           if (get_name.isInteger()) {
-              def read_yaml = readYaml file: "./values/"+ staging_name
+              def read_yaml = readYaml file: workspace+"/values/"+ staging_name
               if (config.migration-helper-ui && !config.migration-helper-ui.authorityName == 'Staging Maintain') {
                   releases << staging_name.substring(0, staging_name.name.lastIndexOf('.'))
               }
