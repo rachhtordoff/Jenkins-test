@@ -21,7 +21,7 @@ sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
 
-  def dir new File(workspace+"/values/")
+  def dir = new File(workspace+"/values/")
   dir.eachFileRecurse (FileType.FILES) { staging_name ->
   
       def name = staging_name.name
