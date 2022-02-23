@@ -10,10 +10,7 @@ def exclude_list = [
 ]
 println "hi"
 
-sh 'pwd > pwd.current'
-env.WORKSPACE = readFile('pwd.current')
-echo "${env.WORKSPACE}"
-
+env.WORKSPACE = sh(returnStdout: true, script: 'pwd').trim()
 def workspace = "${env.WORKSPACE}"
 println "${env.WORKSPACE}"
 
