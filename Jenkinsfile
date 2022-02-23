@@ -2,14 +2,21 @@
 import static groovy.io.FileType.*
 
 // def releases = ['staging-shared', 'staging-800', 'staging-801', 'staging-802']
-
+node {
+  
+  stage "checkout repo"
+  
+  checkout SCM 
+  
+  stage "stuff
+  
 def releases = []
 
 def exclude_list = [
   "staging-803.yaml"
 ]
 println "hi"
-node {
+
 
 sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
