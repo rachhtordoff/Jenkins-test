@@ -6,7 +6,7 @@ node {
   
   stage "checkout repo"
   
-  checkout SCM 
+  checkout scm 
   
   stage "stuff"
   
