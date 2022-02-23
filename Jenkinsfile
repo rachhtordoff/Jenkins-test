@@ -10,7 +10,9 @@ def exclude_list = [
 ]
 println "hi"
 
-env.WORKSPACE = pwd(hudson.FilePath)
+sh 'pwd > pwd.current'
+env.WORKSPACE = readFile('pwd.current')
+echo "${env.WORKSPACE}"
 
 def workspace = "${env.WORKSPACE}"
 println "${env.WORKSPACE}"
