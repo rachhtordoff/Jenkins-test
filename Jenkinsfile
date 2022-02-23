@@ -15,7 +15,7 @@ println "${workspace}"
 
 
   new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
-      println "hi
+      println "hi"
       if (!exclude_list.contains(staging_name)){
           remove_yaml= staging_name.replace(".yaml", "")
           println remove_yaml
