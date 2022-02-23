@@ -17,9 +17,10 @@ def workspace = "${env.WORKSPACE}"
 println "${env.WORKSPACE}"
 
 println "hi"
+bat 'dir'
+
 }
 
-bat 'dir'
 
   new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       println "hi"
