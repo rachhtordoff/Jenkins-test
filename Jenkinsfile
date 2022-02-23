@@ -21,7 +21,7 @@ def workspace = "${env.WORKSPACE}"
   
     releases = []
 
-    new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES, nameFilter: nameFilter: ~/staging/) { staging_name ->
+    new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES, nameFilter: ~/staging/) { staging_name ->
 
       name = staging_name.name
       println name
