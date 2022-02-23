@@ -15,12 +15,6 @@ def exclude_list = [
   "staging-803.yaml"
 ]
 
-  def get_authority_name(staging_name){
-  read_yaml= readYaml(file: "values/"+staging_name)
-  return read_yaml['migration-helper-ui']['authorityName']
-}
-
-
 
 sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
@@ -48,5 +42,11 @@ def workspace = "${env.WORKSPACE}"
         println "${item}"
     }
   }
+
+
+  def get_authority_name(staging_name){
+  read_yaml= readYaml(file: "values/"+staging_name)
+  return read_yaml['migration-helper-ui']['authorityName']
+}
 
 
