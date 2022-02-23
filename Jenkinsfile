@@ -21,13 +21,6 @@ sh("ls -A1 ${workspace}")
 
 }
 
-def fileList = "ls "+workspace.execute()
-println fileList
-
-
-
-
-
   new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       println "hi"
       if (!exclude_list.contains(staging_name)){
