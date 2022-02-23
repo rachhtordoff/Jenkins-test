@@ -11,6 +11,8 @@ def exclude_list = [
 println "hi"
 
 if (fileExists("./Jenkinsfiles/${branch}.yml")) {
+    println "hi"
+
     config = readYaml file: "./Jenkinsfiles/${branch}.yml"
     
     new File("./values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
