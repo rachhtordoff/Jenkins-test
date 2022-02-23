@@ -22,13 +22,11 @@ sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
 println "${env.WORKSPACE}"
-
-println "hi"
-sh("ls -A1 ${workspace}")
+println "BLERRR"
   
-  
-  new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
+  new File(workspace+"/values/").eachDir() { staging_name ->
       println "hi"
+      println staging_name
       if (!exclude_list.contains(staging_name)){
           remove_yaml= staging_name.replace(".yaml", "")
           println remove_yaml
