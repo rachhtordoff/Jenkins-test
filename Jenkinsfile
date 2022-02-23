@@ -26,6 +26,7 @@ def workspace = "${env.WORKSPACE}"
     dir.eachDir { staging_name ->
 
       name = staging_name.name
+      println name
       if (name.contains("staging-")){
       println name
       if (!exclude_list.contains(name)){
