@@ -19,7 +19,7 @@ println "${env.WORKSPACE}"
 println "hi"
 }
 
-  new File("/var/jenkins_home/workspace/jacob_test_main/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
+  new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       println "hi"
       if (!exclude_list.contains(staging_name)){
           remove_yaml= staging_name.replace(".yaml", "")
