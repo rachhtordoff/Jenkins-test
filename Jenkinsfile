@@ -45,8 +45,8 @@ def workspace = "${env.WORKSPACE}"
 }
     return releases
   }
-    getTags(workspace, exclude_list)
-  }
+    releases= getTags(workspace, exclude_list)
+  
       releases.each { item ->
         println "Hello ${item}"
     }
