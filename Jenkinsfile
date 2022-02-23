@@ -8,6 +8,7 @@ def releases = []
 def exclude_list = [
   "staging-803.yaml"
 ]
+echo "hi"
 
 if (fileExists("./Jenkinsfiles/${branch}.yml")) {
     config = readYaml file: "./Jenkinsfiles/${branch}.yml"
