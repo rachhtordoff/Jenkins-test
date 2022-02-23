@@ -17,9 +17,15 @@ def workspace = "${env.WORKSPACE}"
 println "${env.WORKSPACE}"
 
 println "hi"
-bat 'dir'
+sh("ls -A1 ${workspace}")
 
 }
+
+def fileList = "ls "+workspace.execute()
+println fileList
+
+
+
 
 
   new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
