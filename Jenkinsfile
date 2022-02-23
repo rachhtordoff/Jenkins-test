@@ -11,6 +11,8 @@ def exclude_list = [
 println "hi"
 
 def workspace = pwd()
+println "${workspace}"
+
 
   new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       if (!exclude_list.contains(staging_name)){
