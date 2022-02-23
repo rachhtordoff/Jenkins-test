@@ -19,26 +19,19 @@ sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
   
-    releases= getTags(workspace, exclude_list)
-  
-      releases.each { item ->
-        println "Hello ${item}"
-    }
-  }
-
   def getTags (workspace, exclude_list) {
-    def releases = []
+    releases = []
 
     new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
-      def name = staging_name.name
+      name = staging_name.name
       println name
       if (!exclude_list.contains(name)){
           remove_yaml= name.replace(".yaml", "")
           get_name= remove_yaml.replace("staging-", "")
 
           if (get_name.isInteger()) {
-            def read_yaml = readYaml(file: "values/"+staging_name.name)
+            read_yaml = readYaml(file: "values/"+staging_name.name)
               println read_yaml['migration-helper-ui']['authorityName']
               if (!read_yaml['migration-helper-ui']['authorityName'] == 'Staging Maintain') {
                   println "ELLOW"
@@ -50,4 +43,11 @@ def workspace = "${env.WORKSPACE}"
       
 }
     return releases
+  }
+  
+      releases= getTags(workspace, exclude_list)
+  
+      releases.each { item ->
+        println "Hello ${item}"
+    }
   }
