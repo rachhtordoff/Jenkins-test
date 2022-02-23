@@ -22,9 +22,9 @@ env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
   
   @NonCPS
-  def dir = new File(workspace+"/values/")
-  dir.eachFileRecurse (groovy.io.FileType.FILES) { staging_name ->
-  
+  def getTags (workspace, exclude_list) {
+    new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
+
       def name = staging_name.name
       println name
       if (!exclude_list.contains(name)){
@@ -42,6 +42,9 @@ def workspace = "${env.WORKSPACE}"
           }
       }
 }
+  }
+    getTags(workspace, exclude_list)
+  }
       releases.each { item ->
         println "Hello ${item}"
     }
