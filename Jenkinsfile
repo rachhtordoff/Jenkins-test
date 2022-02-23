@@ -10,9 +10,9 @@ def exclude_list = [
 ]
 println "hi"
 
-targetDir = workspace
+def workspace = pwd()
 
-  new File(targetDir+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
+  new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       if (!exclude_list.contains(staging_name)){
           remove_yaml= staging_name.replace(".yaml", "")
           get_name= remove_yaml.replace("staging-", "")
