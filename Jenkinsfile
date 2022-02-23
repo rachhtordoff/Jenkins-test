@@ -21,9 +21,10 @@ def workspace = "${env.WORKSPACE}"
   
     releases = []
 
-    new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES, nameFilter: ~/staging/) { staging_name ->
+    new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
       name = staging_name.name
+      if (name.contains("staging-"){
       println name
       if (!exclude_list.contains(name)){
           remove_yaml= name.replace(".yaml", "")
@@ -42,7 +43,7 @@ def workspace = "${env.WORKSPACE}"
             }
          }
       }
-      
+   }
 }
 
     
