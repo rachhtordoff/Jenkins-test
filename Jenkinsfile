@@ -26,8 +26,9 @@ def workspace = "${env.WORKSPACE}"
     new File(workspace+ "/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
       if (!exclude_list.contains(staging_name.name)){
-
-          if (name.replace(".yaml", "").replace("staging-", "").isInteger()) {
+          remove_yaml= name.replace(".yaml", "")
+          get_name= remove_yaml.replace("staging-", "")
+          if (get_name.isInteger()) {
               read_yaml= readYaml(file: "values/"+staging_name.name)
               auth_name = read_yaml['migration-helper-ui']['authorityName']
               if (auth_name != 'Staging Maintain') {
