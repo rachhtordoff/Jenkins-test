@@ -31,6 +31,8 @@ println "BLERRR"
           remove_yaml= staging_name.replace(".yaml", "")
           println remove_yaml
           get_name= remove_yaml.replace("staging-", "")
+          println get_name
+          println get_name.isInteger()
           if (get_name.isInteger()) {
               def read_yaml = readYaml file: workspace+"/values/"+ staging_name
               if (config.migration-helper-ui && !config.migration-helper-ui.authorityName == 'Staging Maintain') {
