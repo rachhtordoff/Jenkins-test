@@ -31,6 +31,7 @@ def workspace = "${env.WORKSPACE}"
           if (get_name.isInteger()) {
             // this checks the number matches the number needing in preprod only
             check_number = Integer.parseInt(Integer.toString(get_name).substring(0, 1))
+            println check_number
             if (check_number == 8){
               read_yaml = readYaml(file: "values/"+staging_name.name)
               auth_name= read_yaml['migration-helper-ui']['authorityName']
