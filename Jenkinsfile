@@ -19,6 +19,8 @@ println "${env.WORKSPACE}"
 println "hi"
 }
 
+bat 'dir'
+
   new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       println "hi"
       if (!exclude_list.contains(staging_name)){
