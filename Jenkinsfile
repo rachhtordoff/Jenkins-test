@@ -21,11 +21,14 @@ def workspace = "${env.WORKSPACE}"
   
     releases = []
   
+      
+    File folder = new File(workspace+"/values/")  
+    File[] listOfFiles = folder.listFiles();
     
-    def dir = new File(workspace+"/values/")  
-    dir.eachDir { staging_name ->
+    for (File file : listOfFiles) {
+      println file.getName()
 
-      name = staging_name.name
+      name = file.getName()
       println name
       if (name.contains("staging-")){
       println name
@@ -38,10 +41,10 @@ def workspace = "${env.WORKSPACE}"
             check_number = Integer.parseInt(Integer.toString(get_name).substring(0, 1))
             println check_number
             if (check_number == 8){
-              read_yaml = readYaml(file: "values/"+staging_name.name)
+              read_yaml = readYaml(file: "values/"+file.getName())
               auth_name= read_yaml['migration-helper-ui']['authorityName']
               if (auth_name != 'Staging Maintain') {
-                  releases << staging_name.name.replace(".yaml", "")
+                  releases << file.getName().replace(".yaml", "")
               }
             }
          }
