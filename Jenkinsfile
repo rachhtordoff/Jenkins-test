@@ -20,7 +20,8 @@ def exclude_list = [
 sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
-
+  
+  @NonCPS
   def dir = new File(workspace+"/values/")
   dir.eachFileRecurse (groovy.io.FileType.FILES) { staging_name ->
   
