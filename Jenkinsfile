@@ -24,7 +24,7 @@ def workspace = "${env.WORKSPACE}"
 println "${env.WORKSPACE}"
 println "BLERRR"
   
-  new File("values/").listFiles().sort{ it.name }.each { def staging_name ->
+  new File("values/").listFiles().each { def staging_name ->
       println "hi"
       println staging_name.name
       if (!exclude_list.contains(staging_name)){
