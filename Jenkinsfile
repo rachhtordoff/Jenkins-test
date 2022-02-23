@@ -28,7 +28,7 @@ def workspace = "${env.WORKSPACE}"
     releases = []
 
 
-    new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
+    new File("values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
       if (!exclude_list.contains(staging_name.name)){
 
