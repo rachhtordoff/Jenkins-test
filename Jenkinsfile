@@ -19,6 +19,13 @@ sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
   
+    releases= getTags(workspace, exclude_list)
+  
+      releases.each { item ->
+        println "Hello ${item}"
+    }
+  }
+
   @NonCPS
   def getTags (workspace, exclude_list) {
     def releases = []
@@ -44,10 +51,4 @@ def workspace = "${env.WORKSPACE}"
       
 }
     return releases
-  }
-    releases= getTags(workspace, exclude_list)
-  
-      releases.each { item ->
-        println "Hello ${item}"
-    }
   }
