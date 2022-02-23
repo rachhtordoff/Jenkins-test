@@ -33,6 +33,7 @@ def workspace = "${env.WORKSPACE}"
             
               if (['read_yaml.migration-helper-ui'] && !read_yaml['migration-helper-ui']['authorityName'] == 'Staging Maintain') {
                   println "ELLOW"
+                println staging_name.substring(0, staging_name.name.lastIndexOf('.'))
                   releases << staging_name.substring(0, staging_name.name.lastIndexOf('.'))
               }
           }
