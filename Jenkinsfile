@@ -37,7 +37,7 @@ def workspace = "${env.WORKSPACE}"
                   println "ELLOW"
                 println staging_name.name.lastIndexOf('.')
                 println staging_name.name
-                  releases << staging_name.name.substring(staging_name.name.lastIndexOf('.'))
+                  releases << staging_name.name.replace(".yaml", "")
               }
           }
       }
@@ -46,6 +46,6 @@ def workspace = "${env.WORKSPACE}"
 
     
       releases.each { item ->
-        println "Hello ${item}"
+        println "${item}"
     }
   }
