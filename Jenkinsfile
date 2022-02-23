@@ -18,7 +18,6 @@ println "${env.WORKSPACE}"
 
 println "hi"
 }
-sleep 300s
 
   new File("values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       println "hi"
