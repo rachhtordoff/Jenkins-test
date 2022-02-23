@@ -20,15 +20,18 @@ env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
   
     releases = []
-
+  @NonCPS
+  def get_authority_name(staging_name){
+      read_yaml= readYaml(file: "values/"+staging_name)
+      return read_yaml['migration-helper-ui']['authorityName']
+      }
+  
     new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
-      name = staging_name.name
-      if (!exclude_list.contains(name)){
+      if (!exclude_list.contains(staging_name.name)){
 
           if (name.replace(".yaml", "").replace("staging-", "").isInteger()) {
-            read_yaml = readYaml(file: "values/"+staging_name.name)
-              auth_name= read_yaml['migration-helper-ui']['authorityName']
+              auth_name= get_authority_name(staging_name.name)
               if (auth_name != 'Staging Maintain') {
                   releases << staging_name.name.replace(".yaml", "")
               }
