@@ -19,14 +19,14 @@ println "${env.WORKSPACE}"
 println "hi"
 }
 
-  new File("values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
+  new File("./values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       println "hi"
       if (!exclude_list.contains(staging_name)){
           remove_yaml= staging_name.replace(".yaml", "")
           println remove_yaml
           get_name= remove_yaml.replace("staging-", "")
           if (get_name.isInteger()) {
-              def read_yaml = readYaml file: "values/"+ staging_name
+              def read_yaml = readYaml file: "./values/"+ staging_name
               if (config.migration-helper-ui && !config.migration-helper-ui.authorityName == 'Staging Maintain') {
                   releases << staging_name.substring(0, staging_name.name.lastIndexOf('.'))
               }
