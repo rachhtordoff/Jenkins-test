@@ -11,8 +11,6 @@ node {
   
   stage "stuff"
   
-def releases = []
-
 def exclude_list = [
   "staging-803.yaml"
 ]
@@ -23,6 +21,8 @@ def workspace = "${env.WORKSPACE}"
   
   @NonCPS
   def getTags (workspace, exclude_list) {
+    def releases = []
+
     new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
       def name = staging_name.name
@@ -41,7 +41,9 @@ def workspace = "${env.WORKSPACE}"
               }
           }
       }
+      
 }
+    return releases
   }
     getTags(workspace, exclude_list)
   }
