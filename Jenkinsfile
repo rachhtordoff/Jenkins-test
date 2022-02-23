@@ -41,7 +41,7 @@ println "BLERRR"
              println read_yaml
             println read_yaml['migration-helper-ui']
             
-              if (read_yaml.migration-helper-ui && !read_yaml.migration-helper-ui.authorityName == 'Staging Maintain') {
+              if (['read_yaml.migration-helper-ui'] && !read_yaml['migration-helper-ui']['authorityName'] == 'Staging Maintain') {
                   releases << staging_name.substring(0, staging_name.name.lastIndexOf('.'))
               }
           }
