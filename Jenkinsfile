@@ -26,29 +26,23 @@ def workspace = "${env.WORKSPACE}"
     File[] listOfFiles = folder.listFiles();
     
     for (File file : listOfFiles) {
-      println file.getName()
 
       name = file.getName()
-      println name
       if (name.contains("staging-")){
-      println name
-      if (!exclude_list.contains(name)){
-          remove_yaml= name.replace(".yaml", "")
-          get_name= remove_yaml.replace("staging-", "")
-          println get_name
-          if (get_name.isInteger()) {
-            // this checks the number matches the number needing in preprod only
-            println get_name.substring(0, 1)
-            check_number = Integer.parseInt(get_name.substring(0, 1))
-            println check_number
-            if (check_number == 8){
-              read_yaml = readYaml(file: "values/"+file.getName())
-              auth_name= read_yaml['migration-helper-ui']['authorityName']
-              if (auth_name != 'Staging Maintain') {
-                  releases << file.getName().replace(".yaml", "")
-              }
-            }
-         }
+        if (!exclude_list.contains(name)){
+            remove_yaml= name.replace(".yaml", "")
+            get_name= remove_yaml.replace("staging-", "")
+            if (get_name.isInteger()) {
+              // this checks the number matches the number needing in preprod only
+              check_number = Integer.parseInt(get_name.substring(0, 1))
+              if (check_number == 8){
+                read_yaml = readYaml(file: "values/"+file.getName())
+                auth_name= read_yaml['migration-helper-ui']['authorityName']
+                if (auth_name != 'Staging Maintain') {
+                    releases << file.getName().replace(".yaml", "")
+                }
+             }
+          }
       }
    }
 }
