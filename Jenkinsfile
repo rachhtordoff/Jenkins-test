@@ -10,8 +10,11 @@ def exclude_list = [
 ]
 println "hi"
 
+sh "ls"
+
+prinln sh "ls"
 def workspace = "${env.WORKSPACE}"
-println "${WORKSPACE}"
+println "${env.WORKSPACE}"
 
 println "hi"
 
