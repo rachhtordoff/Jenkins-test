@@ -24,22 +24,21 @@ def workspace = "${env.WORKSPACE}"
     new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
       name = staging_name.name
-      println name
       if (!exclude_list.contains(name)){
           remove_yaml= name.replace(".yaml", "")
           get_name= remove_yaml.replace("staging-", "")
 
           if (get_name.isInteger()) {
-            read_yaml = readYaml(file: "values/"+staging_name.name)
+            // this checks the number matches the number needing in preprod only
+            check_number = Integer.parseInt(Integer.toString(get_name).substring(0, 1))
+            if (check_number == 8){
+              read_yaml = readYaml(file: "values/"+staging_name.name)
               auth_name= read_yaml['migration-helper-ui']['authorityName']
-            println auth_name
               if (auth_name != 'Staging Maintain') {
-                  println "ELLOW"
-                println staging_name.name.lastIndexOf('.')
-                println staging_name.name
                   releases << staging_name.name.replace(".yaml", "")
               }
-          }
+            }
+         }
       }
       
 }
