@@ -20,11 +20,7 @@ env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
   
     releases = []
-  @NonCPS
-  def get_authority_name(staging_name){
-      read_yaml= readYaml(file: "values/"+staging_name)
-      return read_yaml['migration-helper-ui']['authorityName']
-      }
+
   
     new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
@@ -45,3 +41,8 @@ def workspace = "${env.WORKSPACE}"
         println "${item}"
     }
   }
+  @NonCPS
+  def get_authority_name(staging_name){
+      read_yaml= readYaml(file: "values/"+staging_name)
+      return read_yaml['migration-helper-ui']['authorityName']
+      }
