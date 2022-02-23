@@ -26,7 +26,6 @@ def workspace = "${env.WORKSPACE}"
     }
   }
 
-  @NonCPS
   def getTags (workspace, exclude_list) {
     def releases = []
 
