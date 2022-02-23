@@ -21,8 +21,9 @@ sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
 
-
-  new File(workspace+"/values/").traverse(type: groovy.io.FileType.FILES)  { staging_name ->
+  def dir new File(workspace+"/values/")
+  dir.eachFileRecurse (FileType.FILES) { staging_name ->
+  
       def name = staging_name.name
       println name
       if (!exclude_list.contains(name)){
