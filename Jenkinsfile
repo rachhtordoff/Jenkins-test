@@ -10,12 +10,13 @@ def exclude_list = [
 ]
 println "hi"
 
+node {
 env.WORKSPACE = sh(returnStdout: true, script: 'pwd').trim()
 def workspace = "${env.WORKSPACE}"
 println "${env.WORKSPACE}"
 
 println "hi"
-
+}
 
   new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       println "hi"
