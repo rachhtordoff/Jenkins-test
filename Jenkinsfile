@@ -10,8 +10,8 @@ def exclude_list = [
 ]
 println "hi"
 
-def workspace = env.WORKSPACE
-println env.WORKSPACE
+def workspace = "${env.WORKSPACE}"
+println "${env.WORKSPACE}"
 
 println "hi"
 
