@@ -13,6 +13,8 @@ println "hi"
 def workspace = pwd()
 println "${workspace}"
 
+println "hi"
+
 
   new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       println "hi"
