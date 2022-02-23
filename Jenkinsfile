@@ -36,7 +36,7 @@ println "BLERRR"
           println get_name
           println get_name.isInteger()
           if (get_name.isInteger()) {
-            read_yaml = readYaml file: "/values/"+ staging_name
+            read_yaml = readYaml file: staging_name
               if (config.migration-helper-ui && !config.migration-helper-ui.authorityName == 'Staging Maintain') {
                   releases << staging_name.substring(0, staging_name.name.lastIndexOf('.'))
               }
