@@ -1,10 +1,6 @@
 #!/usr/bin/env groovy
 import static groovy.io.FileType.*
 
-  def get_authority_name(staging_name){
-  read_yaml= readYaml(file: "values/"+staging_name)
-  return read_yaml['migration-helper-ui']['authorityName']
-}
 
 // def releases = ['staging-shared', 'staging-800', 'staging-801', 'staging-802']
 node {
@@ -32,7 +28,8 @@ def workspace = "${env.WORKSPACE}"
       if (!exclude_list.contains(staging_name.name)){
 
           if (name.replace(".yaml", "").replace("staging-", "").isInteger()) {
-              auth_name= get_authority_name(staging_name.name)
+              read_yaml= readYaml(file: "values/"+staging_name.name)
+              auth_name = read_yaml['migration-helper-ui']['authorityName']
               if (auth_name != 'Staging Maintain') {
                   releases << staging_name.name.replace(".yaml", "")
               }
