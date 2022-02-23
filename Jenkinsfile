@@ -35,6 +35,7 @@ println "BLERRR"
           get_name= remove_yaml.replace("staging-", "")
           println get_name
           println get_name.isInteger()
+        println staging_name
           if (get_name.isInteger()) {
             read_yaml = readYaml file: staging_name
              println read_yaml
