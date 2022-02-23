@@ -1,12 +1,6 @@
 #!/usr/bin/env groovy
 import static groovy.io.FileType.*
 
-@NonCPS
-def get_authority_name(staging_name){
-  read_yaml= readYaml(file: "values/"+staging_name)
-  return read_yaml['migration-helper-ui']['authorityName']
-}
-
 
 // def releases = ['staging-shared', 'staging-800', 'staging-801', 'staging-802']
 node {
@@ -21,6 +15,13 @@ def exclude_list = [
   "staging-803.yaml"
 ]
 
+  def get_authority_name(staging_name){
+  read_yaml= readYaml(file: "values/"+staging_name)
+  return read_yaml['migration-helper-ui']['authorityName']
+}
+
+
+
 sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
@@ -28,7 +29,7 @@ def workspace = "${env.WORKSPACE}"
     releases = []
 
 
-    new File("values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
+    new File(workspace+ "/values/").traverse(type: groovy.io.FileType.FILES) { staging_name ->
 
       if (!exclude_list.contains(staging_name.name)){
 
