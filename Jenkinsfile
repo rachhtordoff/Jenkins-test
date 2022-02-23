@@ -9,8 +9,8 @@ def exclude_list = [
   "staging-803.yaml"
 ]
 println "hi"
-
 node {
+
 sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
@@ -19,7 +19,10 @@ println "${env.WORKSPACE}"
 println "hi"
 sh("ls -A1 ${workspace}")
 
-}
+
+
+def log = readFile("${WORKSPACE}/values/");
+println log
 
   new File(workspace+"/values/").traverse(type: FILES, nameFilter: ~/staging-/) { staging_name ->
       println "hi"
@@ -35,3 +38,4 @@ sh("ls -A1 ${workspace}")
           }
       }
 }
+  }
