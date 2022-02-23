@@ -8,7 +8,7 @@ node {
   
   checkout SCM 
   
-  stage "stuff
+  stage "stuff"
   
 def releases = []
 
