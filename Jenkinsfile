@@ -48,7 +48,7 @@ def workspace = "${env.WORKSPACE}"
    }
 }
 
-    
+      println "PRINT OUTPUT"
       releases.each { item ->
         println "${item}"
     }
