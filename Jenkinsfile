@@ -10,7 +10,7 @@ def exclude_list = [
 ]
 println "hi"
 
-def workspace = pwd()
+def workspace = ${env.WORKSPACE}
 println ${env.WORKSPACE}
 
 println "hi"
