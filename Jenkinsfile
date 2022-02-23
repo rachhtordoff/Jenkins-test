@@ -29,6 +29,7 @@ def workspace = "${env.WORKSPACE}"
 
       name = file.getName()
       if (name.contains("staging-")){
+        println name
         if (!exclude_list.contains(name)){
             remove_yaml= name.replace(".yaml", "")
             get_name= remove_yaml.replace("staging-", "")
