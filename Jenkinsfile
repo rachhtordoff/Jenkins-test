@@ -12,7 +12,6 @@ node {
   stage "stuff"
 
 def exclude_authority_names = [
-  "Test (Pre Prod)",
   "Staging Maintain",
   "Training",
   "Team Betamax",
@@ -20,13 +19,7 @@ def exclude_authority_names = [
 ]
 
 def exclude_list = [
-  "staging-051",
-  "staging-036",
-  "staging-052",
-  "staging-038",
-  "staging-039",
-  "staging-029",
-  "staging-031"
+  "staging-801"
 ]
 
 sh 'pwd > workspace'
@@ -50,7 +43,7 @@ def workspace = "${env.WORKSPACE}"
             if (get_name.isInteger()) {
               // this checks the number DOES NOT match 8, in prod only
               check_number = Integer.parseInt(get_name.substring(0, 1))
-              if (check_number != 8){
+              if (check_number == 8){
                 read_yaml = readYaml(file: "values/"+file.getName())
                 auth_name= read_yaml['migration-helper-ui']['authorityName']
                 if (!exclude_authority_names.contains(auth_name)) {
