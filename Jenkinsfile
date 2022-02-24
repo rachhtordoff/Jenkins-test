@@ -19,7 +19,7 @@ def exclude_authority_names = [
 ]
 
 def exclude_list = [
-  "staging-801"
+  "staging-803"
 ]
 
 sh 'pwd > workspace'
