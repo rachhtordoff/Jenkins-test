@@ -43,7 +43,7 @@ def workspace = "${env.WORKSPACE}"
 
       name = file.getName()
       if (name.contains("staging-")){
-        println name
+        println "yaml file captured:"+name
         if (!exclude_list.contains(name)){
             remove_yaml= name.replace(".yaml", "")
             get_name= remove_yaml.replace("staging-", "")
@@ -61,8 +61,11 @@ def workspace = "${env.WORKSPACE}"
       }
    }
 }
+      println "*********************************"
+      println "PRINT SUCCESSFUL YAML FILES"
+      println "*********************************"
 
-      println "PRINT OUTPUT"
+  
       releases.each { item ->
         println "${item}"
     }
