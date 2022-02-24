@@ -44,8 +44,8 @@ def workspace = "${env.WORKSPACE}"
       name = file.getName()
       if (name.contains("staging-")){
         println "yaml file captured:"+name
-        if (!exclude_list.contains(name)){
-            remove_yaml= name.replace(".yaml", "")
+        remove_yaml= name.replace(".yaml", "")
+        if (!exclude_list.contains(remove_yaml)){
             get_name= remove_yaml.replace("staging-", "")
             if (get_name.isInteger()) {
               // this checks the number DOES NOT match 8, in prod only
