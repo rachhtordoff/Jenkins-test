@@ -10,7 +10,15 @@ node {
   checkout scm 
   
   stage "stuff"
-  
+
+def exclude_authority_names = [
+  "Test (Pre Prod)",
+  "Staging Maintain",
+  "Training",
+  "Team Betamax",
+  "API integration test"
+]
+
 def exclude_list = [
   "staging-051",
   "staging-036",
@@ -45,7 +53,7 @@ def workspace = "${env.WORKSPACE}"
               if (check_number != 8){
                 read_yaml = readYaml(file: "values/"+file.getName())
                 auth_name= read_yaml['migration-helper-ui']['authorityName']
-                if (auth_name != 'Staging Maintain') {
+                if (!exclude_authority_names.contains(auth_name)) {
                     releases << file.getName().replace(".yaml", "")
                 }
              }
