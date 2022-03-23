@@ -59,9 +59,7 @@ def workspace = "${env.WORKSPACE}"
           }
       
    }
-}
-}
-   }
+      }
     
       println "*********************************"
       println "PRINT SUCCESSFUL YAML FILES"
@@ -75,3 +73,4 @@ def workspace = "${env.WORKSPACE}"
     }
 }
    }
+  }
