@@ -8,12 +8,10 @@ pipeline {
 agent {label 'node1'}
     
 node {
-  
-  stage ("checkout repo"){
+
   
   checkout scm 
-  }
-  stage ("stuff"){
+
   
 def exclude_authority_names = [
   "Staging Maintain",
@@ -55,7 +53,7 @@ def workspace = "${env.WORKSPACE}"
                 }
              }
           }
-      }
+      
    }
 }
 }
