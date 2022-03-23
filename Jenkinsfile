@@ -6,6 +6,7 @@ import static groovy.io.FileType.*
   
 
 pipeline{
+  agent any
   stages {
     stage('Run Shell Command') {
 
