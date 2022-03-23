@@ -4,7 +4,7 @@ import static groovy.io.FileType.*
 
 // def releases = ['staging-shared', 'staging-800', 'staging-801', 'staging-802']
   
-pipeline {
+
 agent {label 'node1'}
     
 node {
@@ -58,7 +58,7 @@ def workspace = "${env.WORKSPACE}"
 }
 }
    }
-    }
+    
       println "*********************************"
       println "PRINT SUCCESSFUL YAML FILES"
       println "*********************************"
