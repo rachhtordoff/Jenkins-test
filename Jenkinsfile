@@ -9,7 +9,7 @@ pipeline{
   
   stages{
     
-    stage{
+    stage('Checkout code'){
       
    
   
