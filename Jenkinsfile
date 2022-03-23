@@ -44,7 +44,7 @@ def workspace = "${env.WORKSPACE}"
     File[] listOfFiles = folder.listFiles();
     println listOfFiles
     for (File file : listOfFiles) {
-      
+      println file
 
       name = file.getName()
       println name
