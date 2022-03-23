@@ -31,7 +31,6 @@ def exclude_list = [
 ]
 
 releases = []
-script {
 
 sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
@@ -76,7 +75,6 @@ def workspace = "${env.WORKSPACE}"
         println "${item}"
            }
    }
-    }
 }}
    }
   }
