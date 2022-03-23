@@ -5,7 +5,7 @@ import static groovy.io.FileType.*
 // def releases = ['staging-shared', 'staging-800', 'staging-801', 'staging-802']
   
 
-agent {label 'node1'}
+agent { node { label 'labelName' } }
     
 node {
 
