@@ -7,11 +7,12 @@ import static groovy.io.FileType.*
 
 pipeline{
   
-  stages{
-    
-    stage('Checkout code'){
-      
-      steps{
+  stages {
+    stage('Run Shell Command') {
+
+      steps {
+        script {
+
   
   checkout scm 
 
@@ -69,7 +70,7 @@ def workspace = "${env.WORKSPACE}"
   
       releases.each { item ->
         println "${item}"
-        
+           }
    }
     }
 }
