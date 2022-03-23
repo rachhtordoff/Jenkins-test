@@ -8,7 +8,7 @@ import static groovy.io.FileType.*
 pipeline{
   agent any
   stages {
-    stage('Run Shell Command') {
+    stage('checkout scm') {
 
       steps {
         script {
@@ -16,7 +16,10 @@ pipeline{
   
   checkout scm 
 
-  
+        }
+        
+stage('do the stuff') {
+
 def exclude_authority_names = [
   "Staging Maintain",
   "Training",
@@ -28,11 +31,14 @@ def exclude_list = [
   "staging-803"
 ]
 
+releases = []
+script {
+
 sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
   
-    releases = []
+ 
   
       
     File folder = new File(workspace+"/values/")  
@@ -60,7 +66,8 @@ def workspace = "${env.WORKSPACE}"
       
    }
       }
-    
+       }
+    }
       println "*********************************"
       println "PRINT SUCCESSFUL YAML FILES"
       println "*********************************"
@@ -69,7 +76,7 @@ def workspace = "${env.WORKSPACE}"
       releases.each { item ->
         println "${item}"
            }
-   }
+
     }
 }
    }
