@@ -11,7 +11,7 @@ pipeline{
     
     stage('Checkout code'){
       
-   
+      steps{
   
   checkout scm 
 
@@ -69,6 +69,8 @@ def workspace = "${env.WORKSPACE}"
   
       releases.each { item ->
         println "${item}"
+        
+   }
     }
 }
    }
