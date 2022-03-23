@@ -9,12 +9,12 @@ agent {label 'node1'}
     
 node {
   
-  stage "checkout repo"
+  stage ("checkout repo"){
   
   checkout scm 
+  }
+  stage ("stuff"){
   
-  stage "stuff"
-
 def exclude_authority_names = [
   "Staging Maintain",
   "Training",
@@ -59,6 +59,7 @@ def workspace = "${env.WORKSPACE}"
    }
 }
 }
+   }
     }
       println "*********************************"
       println "PRINT SUCCESSFUL YAML FILES"
