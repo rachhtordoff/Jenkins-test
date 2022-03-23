@@ -16,7 +16,7 @@ pipeline{
   
   checkout scm 
 
-        }
+        
 
 
 def exclude_authority_names = [
@@ -77,7 +77,7 @@ def workspace = "${env.WORKSPACE}"
            }
    }
     }
-}
+}}
    }
   }
 
