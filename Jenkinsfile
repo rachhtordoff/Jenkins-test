@@ -17,7 +17,7 @@ pipeline{
   checkout scm 
 
         
-
+println "bhhgug"
 
 def exclude_authority_names = [
   "Staging Maintain",
@@ -45,6 +45,7 @@ def workspace = "${env.WORKSPACE}"
     for (File file : listOfFiles) {
 
       name = file.getName()
+      println name
       if (name.contains("staging-")){
         println "yaml file captured:"+name
         remove_yaml= name.replace(".yaml", "")
