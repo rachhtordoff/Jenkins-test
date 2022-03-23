@@ -18,7 +18,7 @@ pipeline{
 
         }
         
-stage('do the stuff') {
+stage('do the stuff') {  steps {
 
 def exclude_authority_names = [
   "Staging Maintain",
@@ -67,7 +67,7 @@ def workspace = "${env.WORKSPACE}"
    }
       }
        }
-    }
+    
       println "*********************************"
       println "PRINT SUCCESSFUL YAML FILES"
       println "*********************************"
@@ -78,7 +78,7 @@ def workspace = "${env.WORKSPACE}"
            }
 
     }
-}
+}}   }
    }
   }
 }
