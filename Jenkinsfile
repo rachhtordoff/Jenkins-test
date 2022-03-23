@@ -17,8 +17,7 @@ pipeline{
   checkout scm 
 
         }
-        
-stage('do the stuff') {  steps {
+
 
 def exclude_authority_names = [
   "Staging Maintain",
@@ -76,7 +75,7 @@ def workspace = "${env.WORKSPACE}"
       releases.each { item ->
         println "${item}"
            }
-
+   }
     }
 }}   }
    }
