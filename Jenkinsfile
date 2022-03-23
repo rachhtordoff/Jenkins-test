@@ -40,6 +40,7 @@ def workspace = "${env.WORKSPACE}"
   
       
     File folder = new File(workspace+"/values/")  
+    println folder
     File[] listOfFiles = folder.listFiles();
     
     for (File file : listOfFiles) {
