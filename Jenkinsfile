@@ -77,7 +77,7 @@ def workspace = "${env.WORKSPACE}"
            }
    }
     }
-}}   }
+}}   
    }
   }
 }
