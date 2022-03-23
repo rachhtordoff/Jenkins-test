@@ -15,6 +15,7 @@ pipeline{
 
   
   checkout scm 
+  println ls
 
         
 println "bhhgug"
@@ -36,7 +37,7 @@ sh 'pwd > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
   
- 
+ println ls
   
       
     File folder = new File(workspace+"/values/")  
