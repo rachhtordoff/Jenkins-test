@@ -5,10 +5,13 @@ import static groovy.io.FileType.*
 // def releases = ['staging-shared', 'staging-800', 'staging-801', 'staging-802']
   
 
-agent { node { label 'labelName' } }
+pipeline{
+  
+  stages{
     
-node {
-
+    stage{
+      
+   
   
   checkout scm 
 
@@ -67,4 +70,5 @@ def workspace = "${env.WORKSPACE}"
       releases.each { item ->
         println "${item}"
     }
-
+}
+   }
