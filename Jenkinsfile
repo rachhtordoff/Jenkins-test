@@ -15,7 +15,6 @@ pipeline{
 
   
   checkout scm 
-findFiles(glob: '**/.pjs')
         
 println "bhhgug"
 
