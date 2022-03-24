@@ -3,20 +3,13 @@ import static groovy.io.FileType.*
 
 
 // def releases = ['staging-shared', 'staging-800', 'staging-801', 'staging-802']
+node {
   
-
-pipeline{
-  agent any
-  stages {
-    stage('checkout scm') {
-
-      steps {
-        script {
-
+  stage "checkout repo"
   
   checkout scm 
-        
-println "bhhgug"
+  
+  stage "stuff"
 
 def exclude_authority_names = [
   "Staging Maintain",
@@ -29,19 +22,19 @@ def exclude_list = [
   "staging-803"
 ]
 
-releases = []
-
-
+sh 'pwd > workspace'
+env.WORKSPACE = readFile('workspace').trim()
+def workspace = "${env.WORKSPACE}"
+  
+    releases = []
+  
       
-    File folder = new File("./values/")  
-    println folder
+    File folder = new File(workspace+"/values/")  
     File[] listOfFiles = folder.listFiles();
-    println listOfFiles
+    
     for (File file : listOfFiles) {
-      println file
 
       name = file.getName()
-      println name
       if (name.contains("staging-")){
         println "yaml file captured:"+name
         remove_yaml= name.replace(".yaml", "")
@@ -58,11 +51,9 @@ releases = []
                 }
              }
           }
-      
-   }
       }
-       }
-    
+   }
+}
       println "*********************************"
       println "PRINT SUCCESSFUL YAML FILES"
       println "*********************************"
@@ -70,9 +61,5 @@ releases = []
   
       releases.each { item ->
         println "${item}"
-           }
-   }
-}}
-   }
+    }
   }
-
