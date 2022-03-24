@@ -36,7 +36,7 @@ env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
     
       
-    File folder = new File(workspace+"/values/")  
+    File folder = new File("/home/jenkins/agent/values/")  
     println folder
     File[] listOfFiles = folder.listFiles();
     println listOfFiles
