@@ -15,8 +15,7 @@ pipeline{
 
   
   checkout scm 
-  println sh "ls"
-
+findFiles(glob: '**/.pjs')
         
 println "bhhgug"
 
@@ -33,12 +32,10 @@ def exclude_list = [
 
 releases = []
 
-sh 'pwd > workspace'
+sh '/home/jenkins/agent > workspace'
 env.WORKSPACE = readFile('workspace').trim()
 def workspace = "${env.WORKSPACE}"
-  
-  println sh "ls"
-  
+    
       
     File folder = new File(workspace+"/values/")  
     println folder
