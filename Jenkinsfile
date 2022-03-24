@@ -31,10 +31,7 @@ def exclude_list = [
 
 releases = []
 
-sh '/home/jenkins/agent > workspace'
-env.WORKSPACE = readFile('workspace').trim()
-def workspace = "${env.WORKSPACE}"
-    
+
       
     File folder = new File("./values/")  
     println folder
